@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="back.jpg" width="1300" />
+        <form id="city-form">
+            <div class="form-group">
+                <div class="col-12">
+                    <div class="row">
+                        <input class="form-control form-control-lg" type="text" id="city-input"
+                            placeholder="Search for a place">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="frame">
+            <div class="card border-dark mb-3" style="max-width: 44rem;">
+                <div class="card-body text-dark">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <span class="head" id="change">
+                                    Today</span>
+                                </br>
+                                <span class="indicators" id="clear">Clear</span>
+                                </br>
+                                <span class="temp" id="celsius"> ☀ 31°C </span>
+                                <span class="units">
+                                    <a href="#" id="celsius-link">°C</a> |
+                                    <a href="#" id="fahrenheit-link">°F</a>
+                                </span>
+                            </div>
+                            </br>
+                            <div class="col">
+                                </br>
+                                <span class="indicators">Humidity: 43%
+                                    </br>
+                                    Wind: 5 km/h</span>
+                            </div>
+                        </div>
+                    </div>
+                    </br>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                Mon
+                                </br>
+                                <h1>⛅</h1>
+                                31°
+                            </div>
+                            <div class="col">
+                                Tue
+                                </br>
+                                <h1>🌦</h1>
+                                29°
+                            </div>
+                            <div class="col">
+                                Wed
+                                </br>
+                                <h1>☁</h1>
+                                29°
+                            </div>
+                            <div class="col">
+                                Thu
+                                </br>
+                                <h1>🌧</h1>
+                                27°
+                            </div>
+                            <div class="col">
+                                Fri
+                                </br>
+                                <h1>⛅</h1>
+                                30°
+                            </div>
+                            <div class="col">
+                                Sat
+                                </br>
+                                <h1>🌩</h1>
+                                30°
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    <p>
+                        Coded by Olha Polishchuk
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-outline-secondary">My location</button>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
