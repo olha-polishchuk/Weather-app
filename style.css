@@ -39,6 +39,14 @@ form {
 .form-group {
   width: 690px;
 }
+.link {
+  font-size: 13px;
+  color: rgb(55, 54, 54);
+}
+.author {
+  font-size: 13px;
+  opacity: 0.7;
+}
 h1 {
   font-size: 34px;
   line-height: 48px;
@@ -52,10 +60,6 @@ h2 {
   font-weight: 400;
 }
 
-p {
-  font-size: 15px;
-  opacity: 0.7;
-}
 button {
   margin: 0% 0% 0% 8.5%;
 }
