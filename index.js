@@ -60,6 +60,12 @@ let city = document.querySelector("#city-input");
 function showTemperature(response) {
   let temp = Math.round(response.data.main.temp);
   let tempChange = document.querySelector("#celsius");
+  document.querySelector(
+    "#humidity"
+  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
+    response.data.wind.speed
+  )} km/h`;
   tempChange.innerHTML = `☀ ${temp}°C`;
 }
 let form = document.querySelector("form");
@@ -102,6 +108,12 @@ function showTempButton(response) {
   let cityIndicators = document.querySelector("#clear");
   tempChange.innerHTML = `☀ ${temp}°C`;
   cityIndicators.innerHTML = `Clear in <strong> ${city} </strong>`;
+  document.querySelector(
+    "#humidity"
+  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
+    response.data.wind.speed
+  )} km/h`;
   let cityBut = document.querySelector("button");
   cityBut.innerHTML = `${city}`;
 }
