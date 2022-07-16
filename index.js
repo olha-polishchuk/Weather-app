@@ -25,9 +25,9 @@ if (timeMin < 10) {
 change.innerHTML = `Today is ${currentDay}, ${timeHour}:${timeMin}`;
 
 function displayWeatherCondition(response) {
-  document.querySelector("#celsius").innerHTML = `☀ ${Math.round(
+  document.querySelector("#celsius").innerHTML = `${Math.round(
     response.data.main.temp
-  )} °C`;
+  )}°C`;
   console.log(response);
   document.querySelector(
     "#humidity"
@@ -38,6 +38,12 @@ function displayWeatherCondition(response) {
   document.querySelector(
     "#clear"
   ).innerHTML = `${response.data.weather[0].main} in <strong> ${response.data.name}</strong>`;
+  document
+    .querySelector("#image")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 function searchCity(city) {
   let apiKey = "1232f73dc68c5b5be0e1f667a96ca434";
@@ -60,13 +66,18 @@ let city = document.querySelector("#city-input");
 function showTemperature(response) {
   let temp = Math.round(response.data.main.temp);
   let tempChange = document.querySelector("#celsius");
+  let image = document.querySelector("#image");
   document.querySelector(
     "#humidity"
   ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )} km/h`;
-  tempChange.innerHTML = `☀ ${temp}°C`;
+  tempChange.innerHTML = `${temp}°C`;
+  image.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 let form = document.querySelector("form");
 form.addEventListener("submit", getTemperature);
@@ -83,7 +94,7 @@ function getTemperature(event) {
 function fahrenheit(event) {
   event.preventDefault();
   let degrees = document.querySelector("#celsius");
-  degrees.innerHTML = `☀  87,8°F`;
+  degrees.innerHTML = `87,8°F`;
 }
 
 let farForm = document.querySelector("#fahrenheit-link");
@@ -92,7 +103,7 @@ farForm.addEventListener("click", fahrenheit);
 function celsius(event) {
   event.preventDefault();
   let degree = document.querySelector("#celsius");
-  degree.innerHTML = `☀  31°C`;
+  degree.innerHTML = `31°C`;
 }
 
 let celForm = document.querySelector("#celsius-link");
@@ -106,7 +117,12 @@ function showTempButton(response) {
   let tempChange = document.querySelector("#celsius");
   let city = response.data.name;
   let cityIndicators = document.querySelector("#clear");
-  tempChange.innerHTML = `☀ ${temp}°C`;
+  let image = document.querySelector("#image");
+  tempChange.innerHTML = `${temp}°C`;
+  image.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   cityIndicators.innerHTML = `Clear in <strong> ${city} </strong>`;
   document.querySelector(
     "#humidity"

@@ -47,6 +47,12 @@ form {
   font-size: 13px;
   opacity: 0.7;
 }
+.float-left {
+  display: inline;
+  margin: 0 0 20px;
+  width: 70px;
+}
+
 h1 {
   font-size: 34px;
   line-height: 48px;
