@@ -52,6 +52,8 @@ function basicCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
+
+basicCity("Kyiv");
 // ------------------------------
 // --- end displayWeatherCondition
 // ------------------------------
@@ -70,6 +72,7 @@ function searchCity(event) {
 }
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", searchCity);
+
 // ------------------------------
 // --- end searchCity
 // ------------------------------
@@ -80,29 +83,27 @@ cityForm.addEventListener("submit", searchCity);
 
 function fahrenheit(event) {
   event.preventDefault();
+  celForm.classList.remove("inactive");
+  farForm.classList.add("inactive");
   let degrees = document.querySelector("#degree");
-  let fahrenheitTemp = celsiusTemperature + 10;
-  //celsiusTemperature * 9 / 5 + 32°F
-
-  degrees.innerHTML = Math.round(fahrenheitTemp);
-  //`${Math.round(fahrenheitTemp)} °F`;
-  //`87,8°F`;
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  degrees.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
 }
 let celsiusTemperature = null;
 
 let farForm = document.querySelector("#fahrenheit-link");
 farForm.addEventListener("click", fahrenheit);
 
-basicCity("Kyiv");
+function celsius(event) {
+  event.preventDefault();
+  celForm.classList.add("inactive");
+  farForm.classList.remove("inactive");
+  let degree = document.querySelector("#degree");
+  degree.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+}
 
-// function celsius(event) {
-//   event.preventDefault();
-//   let degree = document.querySelector("#degree");
-//   degree.innerHTML = `31°C`;
-// }
-
-// let celForm = document.querySelector("#celsius-link");
-// celForm.addEventListener("click", celsius);
+let celForm = document.querySelector("#celsius-link");
+celForm.addEventListener("click", celsius);
 // ------------------------------
 // --- finish fahrenheit
 // ------------------------------
