@@ -24,101 +24,96 @@ if (timeMin < 10) {
 }
 change.innerHTML = `Today is ${currentDay}, ${timeHour}:${timeMin}`;
 
+// ------------------------------
+// --- start displayWeatherCondition
+// ------------------------------
 function displayWeatherCondition(response) {
-  document.querySelector("#celsius").innerHTML = `${Math.round(
-    response.data.main.temp
-  )}°C`;
-  console.log(response);
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
-    response.data.wind.speed
-  )} km/h`;
-  document.querySelector(
-    "#clear"
-  ).innerHTML = `${response.data.weather[0].main} in <strong> ${response.data.name}</strong>`;
-  document
-    .querySelector("#image")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
-}
-function searchCity(city) {
-  let apiKey = "1232f73dc68c5b5be0e1f667a96ca434";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
-function showCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-  let cityIndicators = document.querySelector("#clear");
-  cityIndicators.innerHTML = `Clear in <strong> ${cityInput.value} </strong>`;
-}
-let cityForm = document.querySelector("#city-form");
-cityForm.addEventListener("submit", showCity);
-
-let apiKey = "1232f73dc68c5b5be0e1f667a96ca434";
-let city = document.querySelector("#city-input");
-
-function showTemperature(response) {
-  let temp = Math.round(response.data.main.temp);
-  let tempChange = document.querySelector("#celsius");
+  let tempChange = document.querySelector("#degree");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
   let image = document.querySelector("#image");
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
-    response.data.wind.speed
-  )} km/h`;
-  tempChange.innerHTML = `${temp}°C`;
+  let clear = document.querySelector("#clear");
+
+  celsiusTemperature = response.data.main.temp;
+
+  tempChange.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
   image.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  clear.innerHTML = `${response.data.weather[0].main} in <strong> ${response.data.name}</strong>`;
+  //console.log(response);
 }
-let form = document.querySelector("form");
-form.addEventListener("submit", getTemperature);
 
-function getTemperature(event) {
-  event.preventDefault();
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+function basicCity(city) {
+  let apiKey = "1232f73dc68c5b5be0e1f667a96ca434";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
 }
+// ------------------------------
+// --- end displayWeatherCondition
+// ------------------------------
+
+// ------------------------------
+// --- start searchCity
+// ------------------------------
+function searchCity(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  let cityIndicators = document.querySelector("#clear");
+  let apiKey = "1232f73dc68c5b5be0e1f667a96ca434";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
+  cityIndicators.innerHTML = `Clear in <strong> ${cityInput.value} </strong>`;
+}
+let cityForm = document.querySelector("#city-form");
+cityForm.addEventListener("submit", searchCity);
+// ------------------------------
+// --- end searchCity
+// ------------------------------
 
 // ------------------------------
 // --- start fahrenheit
 // ------------------------------
+
 function fahrenheit(event) {
   event.preventDefault();
-  let degrees = document.querySelector("#celsius");
-  degrees.innerHTML = `87,8°F`;
+  let degrees = document.querySelector("#degree");
+  let fahrenheitTemp = celsiusTemperature + 10;
+  //celsiusTemperature * 9 / 5 + 32°F
+
+  degrees.innerHTML = Math.round(fahrenheitTemp);
+  //`${Math.round(fahrenheitTemp)} °F`;
+  //`87,8°F`;
 }
+let celsiusTemperature = null;
 
 let farForm = document.querySelector("#fahrenheit-link");
 farForm.addEventListener("click", fahrenheit);
 
-function celsius(event) {
-  event.preventDefault();
-  let degree = document.querySelector("#celsius");
-  degree.innerHTML = `31°C`;
-}
+basicCity("Kyiv");
 
-let celForm = document.querySelector("#celsius-link");
-celForm.addEventListener("click", celsius);
+// function celsius(event) {
+//   event.preventDefault();
+//   let degree = document.querySelector("#degree");
+//   degree.innerHTML = `31°C`;
+// }
+
+// let celForm = document.querySelector("#celsius-link");
+// celForm.addEventListener("click", celsius);
 // ------------------------------
 // --- finish fahrenheit
 // ------------------------------
 
 function showTempButton(response) {
-  let temp = Math.round(response.data.main.temp);
-  let tempChange = document.querySelector("#celsius");
+  celsiusTemperature = response.data.main.temp;
+  let tempChange = document.querySelector("#degree");
   let city = response.data.name;
   let cityIndicators = document.querySelector("#clear");
   let image = document.querySelector("#image");
-  tempChange.innerHTML = `${temp}°C`;
+  tempChange.innerHTML = `${Math.round(celsiusTemperature)}°C`;
   image.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
@@ -148,5 +143,3 @@ function getButton(event) {
 }
 let butChange = document.querySelector("button");
 butChange.addEventListener("click", getButton);
-
-searchCity("Kyiv");
