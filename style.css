@@ -2,8 +2,18 @@
   font-size: 13px;
   opacity: 0.7;
 }
+.bi-search {
+  position: relative;
+  top: -30px;
+  right: -330px;
+}
 .body {
   font-family: Helvetica, Arial, sans-serif;
+}
+.clear {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0.7;
 }
 .col {
   font-family: monospace;
@@ -33,6 +43,8 @@
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
   opacity: 0.7;
+  position: relative;
+  top: 28px;
 }
 .link {
   font-size: 13px;

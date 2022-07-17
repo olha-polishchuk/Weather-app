@@ -1,5 +1,5 @@
 let currentTime = new Date();
-let change = document.querySelector("#change");
+let updated = document.querySelector("#updated");
 let week = [
   "Sunday",
   "Monday",
@@ -19,7 +19,7 @@ let timeMin = currentTime.getMinutes();
 if (timeMin < 10) {
   timeMin = `0${timeMin}`;
 }
-change.innerHTML = `Today is ${currentDay}, ${timeHour}:${timeMin}`;
+updated.innerHTML = `Last updated: <strong>${currentDay}, ${timeHour}:${timeMin}</strong>`;
 
 // ------------------------------
 // --- start displayWeatherCondition
@@ -68,7 +68,8 @@ function searchCity(event) {
   cityIndicators.innerHTML = `Clear in <strong> ${cityInput.value} </strong>`;
 }
 let cityForm = document.querySelector("#city-form");
-cityForm.addEventListener("submit", searchCity);
+cityForm.addEventListener("submit", searchCity) ||
+  cityForm.addEventListener("click", searchCity);
 
 // ------------------------------
 // --- end searchCity
