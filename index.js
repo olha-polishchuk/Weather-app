@@ -21,9 +21,6 @@ if (timeMin < 10) {
 }
 updated.innerHTML = `Last updated: <strong>${currentDay}, ${timeHour}:${timeMin}</strong>`;
 
-// ------------------------------
-// --- start displayWeatherCondition
-// ------------------------------
 function displayWeatherCondition(response) {
   let tempChange = document.querySelector("#degree");
   let humidity = document.querySelector("#humidity");
@@ -51,13 +48,7 @@ function basicCity(city) {
 }
 
 basicCity("Kyiv");
-// ------------------------------
-// --- end displayWeatherCondition
-// ------------------------------
 
-// ------------------------------
-// --- start searchCity
-// ------------------------------
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
@@ -70,14 +61,6 @@ function searchCity(event) {
 let cityForm = document.querySelector("#city-form");
 cityForm.addEventListener("submit", searchCity) ||
   cityForm.addEventListener("click", searchCity);
-
-// ------------------------------
-// --- end searchCity
-// ------------------------------
-
-// ------------------------------
-// --- start fahrenheit
-// ------------------------------
 
 function fahrenheit(event) {
   event.preventDefault();
@@ -102,9 +85,6 @@ function celsius(event) {
 
 let celForm = document.querySelector("#celsius-link");
 celForm.addEventListener("click", celsius);
-// ------------------------------
-// --- finish fahrenheit
-// ------------------------------
 
 function showTempButton(response) {
   celsiusTemperature = response.data.main.temp;
