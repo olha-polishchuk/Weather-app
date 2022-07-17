@@ -52,6 +52,10 @@
   cursor: default;
   text-decoration: none;
 }
+.weather-temperature .units {
+  position: relative;
+  top: -18px;
+}
 
 button {
   margin: 0% 0% 0% 8.5%;

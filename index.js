@@ -1,6 +1,3 @@
-//   `It is currently ${Math.round(weather[city].temp)}°C
-// (${Math.round((weather[city].temp * 9) / 5 + 32)}°F)
-
 let currentTime = new Date();
 let change = document.querySelector("#change");
 let week = [
@@ -36,7 +33,7 @@ function displayWeatherCondition(response) {
 
   celsiusTemperature = response.data.main.temp;
 
-  tempChange.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  tempChange.innerHTML = `${Math.round(celsiusTemperature)}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
   image.setAttribute(
@@ -87,7 +84,7 @@ function fahrenheit(event) {
   farForm.classList.add("inactive");
   let degrees = document.querySelector("#degree");
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-  degrees.innerHTML = `${Math.round(fahrenheitTemp)}°F`;
+  degrees.innerHTML = `${Math.round(fahrenheitTemp)}`;
 }
 let celsiusTemperature = null;
 
@@ -99,7 +96,7 @@ function celsius(event) {
   celForm.classList.add("inactive");
   farForm.classList.remove("inactive");
   let degree = document.querySelector("#degree");
-  degree.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  degree.innerHTML = `${Math.round(celsiusTemperature)}`;
 }
 
 let celForm = document.querySelector("#celsius-link");
@@ -114,7 +111,7 @@ function showTempButton(response) {
   let city = response.data.name;
   let cityIndicators = document.querySelector("#clear");
   let image = document.querySelector("#image");
-  tempChange.innerHTML = `${Math.round(celsiusTemperature)}°C`;
+  tempChange.innerHTML = `${Math.round(celsiusTemperature)}`;
   image.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
