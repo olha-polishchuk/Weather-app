@@ -1,20 +1,27 @@
-img {
-  display: block;
-  margin: 8% 0% 2% 0%;
-  border-radius: 10px;
+.author {
+  font-size: 13px;
+  opacity: 0.7;
 }
-
-form {
-  padding: 1px 50px;
-  margin: -20% 0% 0% 0.6%;
-  position: absolute;
+.body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+.col {
+  font-family: monospace;
+}
+.end {
+  margin: 2% 0% 2% 0%;
+}
+.float-left {
+  display: inline;
+  margin: 0 0 20px;
+  width: 70px;
+}
+.form-group {
+  width: 690px;
 }
 .frame {
   margin: -14% 0% 0% 0%;
   padding: 1px 50px;
-}
-.body {
-  font-family: Helvetica, Arial, sans-serif;
 }
 .head {
   font-family: Helvetica, Arial, sans-serif;
@@ -22,55 +29,51 @@ form {
   font-weight: 550;
   line-height: 2;
 }
+.indicators {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.link {
+  font-size: 13px;
+  color: rgb(22, 1, 91);
+}
 .temp {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 2;
 }
-.col {
-  font-family: monospace;
+.weather-temperature {
+  margin: 0% 0% 4% 0%;
 }
-.indicators {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  opacity: 0.7;
-}
-.form-group {
-  width: 690px;
-}
-.link {
-  font-size: 13px;
-  color: rgb(55, 54, 54);
-}
-.author {
-  font-size: 13px;
-  opacity: 0.7;
-}
-.float-left {
-  display: inline;
-  margin: 0 0 20px;
-  width: 70px;
-}
-
 .weather-temperature .inactive {
   color: black;
   cursor: default;
   text-decoration: none;
+}
+
+button {
+  margin: 0% 0% 0% 8.5%;
+}
+form {
+  padding: 1px 50px;
+  margin: -20% 0% 0% 0.6%;
+  position: absolute;
 }
 h1 {
   font-size: 34px;
   line-height: 48px;
   margin: 0;
 }
-
 h2 {
   margin: 0;
   font-size: 34px;
   line-height: 48px;
   font-weight: 400;
 }
-
-button {
-  margin: 0% 0% 0% 8.5%;
+img {
+  display: block;
+  margin: 8% 0% 2% 0%;
+  border-radius: 10px;
 }
