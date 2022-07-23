@@ -39,6 +39,9 @@
   font-weight: 550;
   line-height: 2;
 }
+.img-forecast {
+  margin: 0 auto;
+}
 .indicators {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -55,6 +58,10 @@
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 2;
+}
+.weather-forecast {
+  text-align: center;
+  margin-left: -2%;
 }
 .weather-temperature {
   margin: 0% 0% 4% 0%;
