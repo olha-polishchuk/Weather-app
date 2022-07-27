@@ -21,8 +21,8 @@ if (timeMin < 10) {
 }
 updated.innerHTML = `Last updated: <strong>${currentDay}, ${timeHour}:${timeMin}</strong>`;
 
-function displayForecast() {
-  // console.log(response.data.daily);
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -46,16 +46,14 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
-// function getForecast(coordinates) {
-//   console.log(coordinates);
-//   let apiKey = "e51c45157578fa9bad045a8c223c29ee";
-//   let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-//   console.log(apiUrl);
-//   axios.get(apiUrl).then(displayForecast);
-// }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "e51c45157578fa9bad045a8c223c29ee";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayWeatherCondition(response) {
   let tempChange = document.querySelector("#degree");
@@ -74,8 +72,7 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   clear.innerHTML = `${response.data.weather[0].main} in <strong> ${response.data.name}</strong>`;
-  // console.log(response);
-  // getForecast(response.data.coord);
+  getForecast(response.data.coord);
 }
 
 function basicCity(city) {
@@ -159,4 +156,3 @@ function getButton(event) {
 }
 let butChange = document.querySelector("button");
 butChange.addEventListener("click", getButton);
-displayForecast();
