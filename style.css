@@ -63,6 +63,9 @@
   text-align: center;
   margin-left: -2%;
 }
+.weather-forecast-temperature-min {
+  color: grey;
+}
 .weather-temperature {
   margin: 0% 0% 4% 0%;
 }
